@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj": {}
+    "C:\\Users\\User\\Source\\Repos\\sevin9\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj": {
+    "C:\\Users\\User\\Source\\Repos\\sevin9\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\sevin9\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj",
         "projectName": "Laboratorinis",
-        "projectPath": "C:\\Users\\User\\source\\repos\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj",
+        "projectPath": "C:\\Users\\User\\Source\\Repos\\sevin9\\Laboratorinis\\Laboratorinis\\Laboratorinis.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\Laboratorinis\\Laboratorinis\\obj\\",
+        "outputPath": "C:\\Users\\User\\Source\\Repos\\sevin9\\Laboratorinis\\Laboratorinis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
