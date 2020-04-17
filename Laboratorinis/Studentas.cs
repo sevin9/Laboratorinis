@@ -27,7 +27,7 @@ namespace Laboratorinis
             }
             temp /= Pazymiai.Count;
             this.Galutinis = 0.3 * temp + 0.7 * EgzoBalas;
-            this.Galutinis = 0.3 * Pazymiai[Pazymiai.Count / 2] + 0.7 * EgzoBalas;
+            this.Mediana = 0.3 * Pazymiai[Pazymiai.Count / 2] + 0.7 * EgzoBalas;
         }
     }
 }
