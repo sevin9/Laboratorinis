@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Laboratorinis
@@ -26,6 +27,8 @@ namespace Laboratorinis
                 tempB.Add(double.Parse (parts[i]));
             }
             studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+            studentai = studentai.OrderBy(o => o.Vardas).ToList();
+
         }
         public static void spausdinti()
         {
@@ -56,6 +59,9 @@ namespace Laboratorinis
                     case "2":
                         spausdinti();
                         break;
+                    case "3":
+                        Nuskaityti();
+                        break;
                     default:
                         Console.WriteLine("Nerasta komanda");
                         Main(args);
@@ -66,6 +72,34 @@ namespace Laboratorinis
                 }
             }
                 
+        }
+
+        private static void Nuskaityti()
+        {
+            string[] lines = File.ReadAllLines("pazymiai.txt");
+            Console.WriteLine("Nuskaitome txt faila");
+            foreach (string line in lines)
+            {
+                string tempV;
+                string tempP;
+                double tempE;
+                List<double> tempB = new List<double>();
+                char[] delimiters = new char[] { '\r', '\n' };
+                string[] parts = line.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                tempV = parts[0];
+                tempP = parts[1];
+                tempE = double.Parse(parts.Last());
+                for (int i = 2; i < parts.Length - 1; i++)
+                {
+                    tempB.Add(double.Parse(parts[i]));
+                }
+                studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+            }
+            Console.WriteLine("Baigeme txt faila");
+
+            studentai = studentai.OrderBy(o => o.Vardas).ToList();
+
         }
     }
 }
