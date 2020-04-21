@@ -46,7 +46,7 @@ namespace Laboratorinis
         static void Main(string[] args)
         {
             Console.Clear();
-            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti");
+            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo");
 
             bool Isejimas = true;
             while(Isejimas)
