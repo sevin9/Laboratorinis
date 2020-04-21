@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vardas_32',['Vardas',['../class_laboratorinis_1_1_studentas.html#abc1db6cb4442cc08b9298e995679ad3e',1,'Laboratorinis::Studentas']]]
+  ['vardas_34',['Vardas',['../class_laboratorinis_1_1_studentas.html#abc1db6cb4442cc08b9298e995679ad3e',1,'Laboratorinis::Studentas']]]
 ];

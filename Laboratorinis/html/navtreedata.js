@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Laboras", "index.html", [
+  [ "Laboratorinis", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],
