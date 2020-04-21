@@ -10,24 +10,33 @@ namespace Laboratorinis
         public static List<Studentas> studentai = new List<Studentas>();
         public static void prideti()
         {
-            string tempV;
-            string tempP;
-            double tempE;
-            List<double> tempB = new List<double>();
-            Console.WriteLine("Parasykite studento Varda Pavarde Pazymius ir Egzamino bala");
-            string tempText = Console.ReadLine();
-            char[] delimiters = new char[] { '\r', '\n' };
-            string[] parts = tempText.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-           // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-            tempV = parts[0];
-            tempP = parts[1];
-            tempE =double.Parse (parts.Last());
-            for (int i =2; i < parts.Length - 1; i++)
+
+            try
             {
-                tempB.Add(double.Parse (parts[i]));
+                string tempV;
+                string tempP;
+                double tempE;
+                List<double> tempB = new List<double>();
+                Console.WriteLine("Parasykite studento Varda Pavarde Pazymius ir Egzamino bala");
+                string tempText = Console.ReadLine();
+                char[] delimiters = new char[] { '\r', '\n' };
+                string[] parts = tempText.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                tempV = parts[0];
+                tempP = parts[1];
+                tempE = double.Parse(parts.Last());
+                for (int i = 2; i < parts.Length - 1; i++)
+                {
+                    tempB.Add(double.Parse(parts[i]));
+                }
+                studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+                studentai = studentai.OrderBy(o => o.Vardas).ToList();
             }
-            studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
-            studentai = studentai.OrderBy(o => o.Vardas).ToList();
+            catch (Exception Klaida)
+            {
+                Console.WriteLine("Ivyko klaida: " + Klaida.Message);
+            }
+
 
         }
         public static void spausdinti()
@@ -76,29 +85,45 @@ namespace Laboratorinis
 
         private static void Nuskaityti()
         {
-            string[] lines = File.ReadAllLines("pazymiai.txt");
-            Console.WriteLine("Nuskaitome txt faila");
-            foreach (string line in lines)
+            try
             {
-                string tempV;
-                string tempP;
-                double tempE;
-                List<double> tempB = new List<double>();
-                char[] delimiters = new char[] { '\r', '\n' };
-                string[] parts = line.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-                // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-                tempV = parts[0];
-                tempP = parts[1];
-                tempE = double.Parse(parts.Last());
-                for (int i = 2; i < parts.Length - 1; i++)
+                string[] lines = File.ReadAllLines("pazymiai.txt");
+                Console.WriteLine("Nuskaitome txt faila");
+                foreach (string line in lines)
                 {
-                    tempB.Add(double.Parse(parts[i]));
-                }
-                studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
-            }
-            Console.WriteLine("Baigeme txt faila");
+                    try
+                    {
+                        string tempV;
+                        string tempP;
+                        double tempE;
+                        List<double> tempB = new List<double>();
+                        char[] delimiters = new char[] { '\r', '\n' };
+                        string[] parts = line.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                        // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                        tempV = parts[0];
+                        tempP = parts[1];
+                        tempE = double.Parse(parts.Last());
+                        for (int i = 2; i < parts.Length - 1; i++)
+                        {
+                            tempB.Add(double.Parse(parts[i]));
+                        }
+                        studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+                    }
+                    catch (Exception Klaida)
+                    {
+                        Console.WriteLine("Ivyko klaida: " + Klaida.Message);
+                    }
 
-            studentai = studentai.OrderBy(o => o.Vardas).ToList();
+                }
+                Console.WriteLine("Baigeme txt faila");
+
+                studentai = studentai.OrderBy(o => o.Vardas).ToList();
+            }
+            catch (Exception Klaida)
+            {
+                Console.WriteLine("Ivyko klaida: " + Klaida.Message);
+            }
+
 
         }
     }
