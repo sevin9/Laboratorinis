@@ -1,4 +1,0 @@
-var dir_7f87fc3e684c26cb269633873966d6fb =
-[
-    [ "netcoreapp3.1", "dir_8f386459107dc58218dcb4f805346021.html", "dir_8f386459107dc58218dcb4f805346021" ]
-];
