@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['studentai_29',['studentai',['../class_laboratorinis_1_1_program.html#aabc665a0b71ea19a6df2cc67bbdef87b',1,'Laboratorinis::Program']]]
+  ['pazymiai_42',['Pazymiai',['../class_laboratorinis_1_1_studentas.html#aa7e5cfd5e161eea96cb867f605c6a2da',1,'Laboratorinis::Studentas']]]
 ];

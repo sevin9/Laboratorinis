@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vardas_16',['Vardas',['../class_laboratorinis_1_1_studentas.html#abc1db6cb4442cc08b9298e995679ad3e',1,'Laboratorinis::Studentas']]]
+  ['netcoreapp3_2e110_2etxt_8',['netcoreapp3.110.txt',['../netcoreapp3_8110_8txt.html',1,'']]],
+  ['netcoreapp3_2e14_2etxt_9',['netcoreapp3.14.txt',['../netcoreapp3_814_8txt.html',1,'']]]
 ];
