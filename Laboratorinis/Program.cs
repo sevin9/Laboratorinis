@@ -8,7 +8,6 @@ namespace Laboratorinis
 {
     class Program
     {
-        public static Queue<Studentas> studentai = new Queue<Studentas>();
         public static Queue<Studentas> vargsiukai = new Queue<Studentas>();
         public static Queue<Studentas> kietiakai = new Queue<Studentas>();
 
@@ -36,21 +35,7 @@ namespace Laboratorinis
                     tempB.Enqueue(double.Parse(parts[i]));
                 }
                 Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                studentai.Enqueue(tempo);
                 List<Studentas> laikinas = new List<Studentas>();
-                foreach (var item in studentai)
-                {
-                    laikinas.Add(item);
-                }
-                laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
-
-                studentai.Clear();
-
-                foreach (var item in laikinas)
-                {
-                    studentai.Enqueue(item);
-                }
-                laikinas.Clear();
                 if (tempo.Galutinis < 5)
                 {
                     vargsiukai.Enqueue(tempo);
@@ -111,9 +96,13 @@ namespace Laboratorinis
             }
             Console.WriteLine();
 
-            foreach (var item in studentai)
+            foreach (var item in kietiakai)
             {
                 Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", item.Pavarde,item.Vardas,item.Galutinis.ToString("0.00"),item.Mediana.ToString("0.00"));
+            }
+            foreach (var item in vargsiukai)
+            {
+                Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", item.Pavarde, item.Vardas, item.Galutinis.ToString("0.00"), item.Mediana.ToString("0.00"));
             }
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
@@ -121,6 +110,7 @@ namespace Laboratorinis
             Console.WriteLine(foo);
             timer = new Stopwatch();
         }
+
 
         public static void spausdintiGerus()
         {
@@ -166,7 +156,7 @@ namespace Laboratorinis
         static void Main(string[] args)
         {
             Console.Clear();
-            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo");
+            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo, 4 Failo generavimas, 5 Kieteku atspausdinimas, 6 vargsiuku atspausdinimas");
 
             bool Isejimas = true;
             while(Isejimas)
@@ -292,21 +282,7 @@ namespace Laboratorinis
                             tempB.Enqueue(double.Parse(parts[i]));
                         }
                         Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                        studentai.Enqueue(tempo);
                         List<Studentas> laikinas = new List<Studentas>();
-                        foreach (var item in studentai)
-                        {
-                            laikinas.Add(item);
-                        }
-                        laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
-
-                        studentai.Clear();
-
-                        foreach (var item in laikinas)
-                        {
-                            studentai.Enqueue(item);
-                        }
-                        laikinas.Clear();
                         if (tempo.Galutinis < 5)
                         {
                             vargsiukai.Enqueue(tempo);
