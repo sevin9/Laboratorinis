@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -8,11 +9,16 @@ namespace Laboratorinis
     class Program
     {
         public static List<Studentas> studentai = new List<Studentas>();
+        public static List<Studentas> vargsiukai = new List<Studentas>();
+        public static List<Studentas> kietiakai = new List<Studentas>();
+
+        public static Stopwatch timer = new Stopwatch();
         public static void prideti()
         {
 
             try
             {
+                timer.Start();
                 string tempV;
                 string tempP;
                 double tempE;
@@ -29,8 +35,25 @@ namespace Laboratorinis
                 {
                     tempB.Add(double.Parse(parts[i]));
                 }
-                studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+                Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
+                studentai.Add(tempo);
+                if (tempo.Galutinis < 5)
+                {
+                    vargsiukai.Add(tempo);
+                    vargsiukai = vargsiukai.OrderBy(o => o.Vardas).ToList();
+                }
+                else
+                {
+                    vargsiukai.Add(tempo);
+                    kietiakai = kietiakai.OrderBy(o => o.Vardas).ToList();
+                }
+
                 studentai = studentai.OrderBy(o => o.Vardas).ToList();
+                timer.Stop();
+                TimeSpan timeTaken = timer.Elapsed;
+                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+                Console.WriteLine(foo);
+                timer = new Stopwatch();
             }
             catch (Exception Klaida)
             {
@@ -41,16 +64,65 @@ namespace Laboratorinis
         }
         public static void spausdinti()
         {
+            timer.Start();
             Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", "Pavarde", "Vardas", "Galutinis", "Mediana");
             for (int i=0; i<=60;i++)
             {
                 Console.Write("-");
             }
             Console.WriteLine();
+
             foreach (var item in studentai)
             {
                 Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", item.Pavarde,item.Vardas,item.Galutinis.ToString("0.00"),item.Mediana.ToString("0.00"));
             }
+            timer.Stop();
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+            Console.WriteLine(foo);
+            timer = new Stopwatch();
+        }
+
+        public static void spausdintiGerus()
+        {
+            timer.Start();
+            Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", "Pavarde", "Vardas", "Galutinis", "Mediana");
+            for (int i = 0; i <= 60; i++)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine();
+
+            foreach (var item in kietiakai)
+            {
+                Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", item.Pavarde, item.Vardas, item.Galutinis.ToString("0.00"), item.Mediana.ToString("0.00"));
+            }
+            timer.Stop();
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+            Console.WriteLine(foo);
+            timer = new Stopwatch();
+        }
+
+        public static void spausdintiVargsiukus()
+        {
+            timer.Start();
+            Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", "Pavarde", "Vardas", "Galutinis", "Mediana");
+            for (int i = 0; i <= 60; i++)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine();
+
+            foreach (var item in vargsiukai)
+            {
+                Console.WriteLine("{0, -15} {1, -15}{2, -15}{3, -15}", item.Pavarde, item.Vardas, item.Galutinis.ToString("0.00"), item.Mediana.ToString("0.00"));
+            }
+            timer.Stop();
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+            Console.WriteLine(foo);
+            timer = new Stopwatch();
         }
         static void Main(string[] args)
         {
@@ -71,6 +143,15 @@ namespace Laboratorinis
                     case "3":
                         Nuskaityti();
                         break;
+                    case "4":
+                        Generavimas();
+                        break;
+                    case "5":
+                        spausdintiGerus();
+                        break;
+                    case "6":
+                        spausdintiVargsiukus();
+                        break;
                     default:
                         Console.WriteLine("Nerasta komanda");
                         Main(args);
@@ -83,10 +164,74 @@ namespace Laboratorinis
                 
         }
 
+        private static void Generavimas()
+        {
+            try
+            {
+                timer.Start();
+                Console.WriteLine("Iveskite norima kieki studentu");
+                int studSk = int.Parse(Console.ReadLine());
+                string failas = "";
+                for (int i = 0; i <= studSk; i++)
+                {
+                    Random random = new Random();
+                    //  return random.Next(min, max);
+                    string tempV = "Vardas" + i + " ";
+                    string tempP = "Pavarde" + i + " ";
+                    double tempE = random.Next(1, 11);
+                    List<double> tempB = new List<double>();
+                    double temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+                    temp = double.Parse(random.Next(1, 11) + "");
+                    tempB.Add(temp);
+
+                    failas += tempV + tempP;
+
+                    foreach (var item in tempB)
+                    {
+                        failas += item + " ";
+                    }
+
+                    failas += "\n";
+
+                }
+                File.WriteAllText(studSk + ".txt", failas);
+                timer.Stop();
+                TimeSpan timeTaken = timer.Elapsed;
+                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+                Console.WriteLine(foo);
+                timer = new Stopwatch();
+            }
+            catch (Exception Klaida)
+            {
+                Console.WriteLine("Ivyko klaida: " + Klaida.Message);
+            }
+        }
+
         private static void Nuskaityti()
         {
             try
             {
+                timer.Start();
+                string[] txtfiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.txt");
+                foreach (var item in txtfiles)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("Iveskite norima faila");
+                string textinis = Console.ReadLine();
                 string[] lines = File.ReadAllLines("pazymiai.txt");
                 Console.WriteLine("Nuskaitome txt faila");
                 foreach (string line in lines)
@@ -107,7 +252,18 @@ namespace Laboratorinis
                         {
                             tempB.Add(double.Parse(parts[i]));
                         }
-                        studentai.Add(new Studentas(tempV, tempP, tempE, tempB));
+                        Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
+                        studentai.Add(tempo);
+                        if (tempo.Galutinis < 5)
+                        {
+                            vargsiukai.Add(tempo);
+                            vargsiukai = vargsiukai.OrderBy(o => o.Vardas).ToList();
+                        }
+                        else
+                        {
+                            vargsiukai.Add(tempo);
+                            kietiakai = kietiakai.OrderBy(o => o.Vardas).ToList();
+                        }
                     }
                     catch (Exception Klaida)
                     {
@@ -118,6 +274,11 @@ namespace Laboratorinis
                 Console.WriteLine("Baigeme txt faila");
 
                 studentai = studentai.OrderBy(o => o.Vardas).ToList();
+                timer.Stop();
+                TimeSpan timeTaken = timer.Elapsed;
+                string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+                Console.WriteLine(foo);
+                timer = new Stopwatch();
             }
             catch (Exception Klaida)
             {
