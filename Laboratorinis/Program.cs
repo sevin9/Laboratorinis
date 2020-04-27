@@ -8,9 +8,9 @@ namespace Laboratorinis
 {
     class Program
     {
-        public static List<Studentas> studentai = new List<Studentas>();
-        public static List<Studentas> vargsiukai = new List<Studentas>();
-        public static List<Studentas> kietiakai = new List<Studentas>();
+        public static LinkedList<Studentas> studentai = new LinkedList<Studentas>();
+        public static LinkedList<Studentas> vargsiukai = new LinkedList<Studentas>();
+        public static LinkedList<Studentas> kietiakai = new LinkedList<Studentas>();
 
         public static Stopwatch timer = new Stopwatch();
         public static void prideti()
@@ -22,7 +22,7 @@ namespace Laboratorinis
                 string tempV;
                 string tempP;
                 double tempE;
-                List<double> tempB = new List<double>();
+                LinkedList<double> tempB = new LinkedList<double>();
                 Console.WriteLine("Parasykite studento Varda Pavarde Pazymius ir Egzamino bala");
                 string tempText = Console.ReadLine();
                 char[] delimiters = new char[] { '\r', '\n' };
@@ -33,22 +33,61 @@ namespace Laboratorinis
                 tempE = double.Parse(parts.Last());
                 for (int i = 2; i < parts.Length - 1; i++)
                 {
-                    tempB.Add(double.Parse(parts[i]));
+                    tempB.AddLast(double.Parse(parts[i]));
                 }
                 Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                studentai.Add(tempo);
+                studentai.AddLast(tempo);
+                List<Studentas> laikinas = new List<Studentas>();
+                foreach (var item in studentai)
+                {
+                    laikinas.Add(item);
+                }
+                laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                studentai.Clear();
+
+                foreach (var item in laikinas)
+                {
+                    studentai.AddLast(item);
+                }
+                laikinas.Clear();
                 if (tempo.Galutinis < 5)
                 {
-                    vargsiukai.Add(tempo);
-                    vargsiukai = vargsiukai.OrderBy(o => o.Vardas).ToList();
+                    vargsiukai.AddLast(tempo);
+                    laikinas = new List<Studentas>();
+                    foreach (var item in vargsiukai)
+                    {
+                        laikinas.Add(item);
+                    }
+                    laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                    vargsiukai.Clear();
+
+                    foreach (var item in laikinas)
+                    {
+                        vargsiukai.AddLast(item);
+                    }
+                    laikinas.Clear();
                 }
                 else
                 {
-                    vargsiukai.Add(tempo);
-                    kietiakai = kietiakai.OrderBy(o => o.Vardas).ToList();
+                    kietiakai.AddLast(tempo);
+                    laikinas = new List<Studentas>();
+                    foreach (var item in kietiakai)
+                    {
+                        laikinas.Add(item);
+                    }
+                    laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                    kietiakai.Clear();
+
+                    foreach (var item in laikinas)
+                    {
+                        kietiakai.AddLast(item);
+                    }
+                    laikinas.Clear();
                 }
 
-                studentai = studentai.OrderBy(o => o.Vardas).ToList();
                 timer.Stop();
                 TimeSpan timeTaken = timer.Elapsed;
                 string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
@@ -179,23 +218,23 @@ namespace Laboratorinis
                     string tempV = "Vardas" + i + " ";
                     string tempP = "Pavarde" + i + " ";
                     double tempE = random.Next(1, 11);
-                    List<double> tempB = new List<double>();
+                    LinkedList<double> tempB = new LinkedList<double>();
                     double temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.Add(temp);
+                    tempB.AddLast(temp);
 
                     failas += tempV + tempP;
 
@@ -232,7 +271,7 @@ namespace Laboratorinis
                 }
                 Console.WriteLine("Iveskite norima faila");
                 string textinis = Console.ReadLine();
-                string[] lines = File.ReadAllLines("pazymiai.txt");
+                string[] lines = File.ReadAllLines(textinis);
                 Console.WriteLine("Nuskaitome txt faila");
                 foreach (string line in lines)
                 {
@@ -241,7 +280,7 @@ namespace Laboratorinis
                         string tempV;
                         string tempP;
                         double tempE;
-                        List<double> tempB = new List<double>();
+                        LinkedList<double> tempB = new LinkedList<double>();
                         char[] delimiters = new char[] { '\r', '\n' };
                         string[] parts = line.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                         // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
@@ -250,19 +289,59 @@ namespace Laboratorinis
                         tempE = double.Parse(parts.Last());
                         for (int i = 2; i < parts.Length - 1; i++)
                         {
-                            tempB.Add(double.Parse(parts[i]));
+                            tempB.AddLast(double.Parse(parts[i]));
                         }
                         Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                        studentai.Add(tempo);
+                        studentai.AddLast(tempo);
+                        List<Studentas> laikinas = new List<Studentas>();
+                        foreach (var item in studentai)
+                        {
+                            laikinas.Add(item);
+                        }
+                        laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                        studentai.Clear();
+
+                        foreach (var item in laikinas)
+                        {
+                            studentai.AddLast(item);
+                        }
+                        laikinas.Clear();
                         if (tempo.Galutinis < 5)
                         {
-                            vargsiukai.Add(tempo);
-                            vargsiukai = vargsiukai.OrderBy(o => o.Vardas).ToList();
+                            vargsiukai.AddLast(tempo);
+                            laikinas = new List<Studentas>();
+                            foreach (var item in vargsiukai)
+                            {
+                                laikinas.Add(item);
+                            }
+                            laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                            vargsiukai.Clear();
+
+                            foreach (var item in laikinas)
+                            {
+                                vargsiukai.AddLast(item);
+                            }
+                            laikinas.Clear();
                         }
                         else
                         {
-                            vargsiukai.Add(tempo);
-                            kietiakai = kietiakai.OrderBy(o => o.Vardas).ToList();
+                            kietiakai.AddLast(tempo);
+                            laikinas = new List<Studentas>();
+                            foreach (var item in kietiakai)
+                            {
+                                laikinas.Add(item);
+                            }
+                            laikinas = laikinas.OrderBy(o => o.Vardas).ToList();
+
+                            kietiakai.Clear();
+
+                            foreach (var item in laikinas)
+                            {
+                                kietiakai.AddLast(item);
+                            }
+                            laikinas.Clear();
                         }
                     }
                     catch (Exception Klaida)
@@ -273,7 +352,6 @@ namespace Laboratorinis
                 }
                 Console.WriteLine("Baigeme txt faila");
 
-                studentai = studentai.OrderBy(o => o.Vardas).ToList();
                 timer.Stop();
                 TimeSpan timeTaken = timer.Elapsed;
                 string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");

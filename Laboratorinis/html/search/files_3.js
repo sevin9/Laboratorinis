@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pazymiai_2etxt_33',['pazymiai.txt',['../bin_2_debug_2netcoreapp3_81_2pazymiai_8txt.html',1,'(Global Namespace)'],['../pazymiai_8txt.html',1,'(Global Namespace)']]],
-  ['program_2ecs_34',['Program.cs',['../_program_8cs.html',1,'']]]
+  ['netcoreapp3_2e110_2etxt_35',['netcoreapp3.110.txt',['../netcoreapp3_8110_8txt.html',1,'']]],
+  ['netcoreapp3_2e14_2etxt_36',['netcoreapp3.14.txt',['../netcoreapp3_814_8txt.html',1,'']]]
 ];

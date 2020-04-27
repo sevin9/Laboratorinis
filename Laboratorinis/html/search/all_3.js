@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kietiakai_3',['kietiakai',['../class_laboratorinis_1_1_program.html#a79ff4dfe832334bbe1ba037fcb88367d',1,'Laboratorinis::Program']]]
+  ['galutinis_4',['Galutinis',['../class_laboratorinis_1_1_studentas.html#a4c4065ab766da7b91b23fc9c5e37a1b6',1,'Laboratorinis::Studentas']]]
 ];
