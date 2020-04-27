@@ -8,9 +8,9 @@ namespace Laboratorinis
 {
     class Program
     {
-        public static LinkedList<Studentas> studentai = new LinkedList<Studentas>();
-        public static LinkedList<Studentas> vargsiukai = new LinkedList<Studentas>();
-        public static LinkedList<Studentas> kietiakai = new LinkedList<Studentas>();
+        public static Queue<Studentas> studentai = new Queue<Studentas>();
+        public static Queue<Studentas> vargsiukai = new Queue<Studentas>();
+        public static Queue<Studentas> kietiakai = new Queue<Studentas>();
 
         public static Stopwatch timer = new Stopwatch();
         public static void prideti()
@@ -22,7 +22,7 @@ namespace Laboratorinis
                 string tempV;
                 string tempP;
                 double tempE;
-                LinkedList<double> tempB = new LinkedList<double>();
+                Queue<double> tempB = new Queue<double>();
                 Console.WriteLine("Parasykite studento Varda Pavarde Pazymius ir Egzamino bala");
                 string tempText = Console.ReadLine();
                 char[] delimiters = new char[] { '\r', '\n' };
@@ -33,10 +33,10 @@ namespace Laboratorinis
                 tempE = double.Parse(parts.Last());
                 for (int i = 2; i < parts.Length - 1; i++)
                 {
-                    tempB.AddLast(double.Parse(parts[i]));
+                    tempB.Enqueue(double.Parse(parts[i]));
                 }
                 Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                studentai.AddLast(tempo);
+                studentai.Enqueue(tempo);
                 List<Studentas> laikinas = new List<Studentas>();
                 foreach (var item in studentai)
                 {
@@ -48,12 +48,12 @@ namespace Laboratorinis
 
                 foreach (var item in laikinas)
                 {
-                    studentai.AddLast(item);
+                    studentai.Enqueue(item);
                 }
                 laikinas.Clear();
                 if (tempo.Galutinis < 5)
                 {
-                    vargsiukai.AddLast(tempo);
+                    vargsiukai.Enqueue(tempo);
                     laikinas = new List<Studentas>();
                     foreach (var item in vargsiukai)
                     {
@@ -65,13 +65,13 @@ namespace Laboratorinis
 
                     foreach (var item in laikinas)
                     {
-                        vargsiukai.AddLast(item);
+                        vargsiukai.Enqueue(item);
                     }
                     laikinas.Clear();
                 }
                 else
                 {
-                    kietiakai.AddLast(tempo);
+                    kietiakai.Enqueue(tempo);
                     laikinas = new List<Studentas>();
                     foreach (var item in kietiakai)
                     {
@@ -83,7 +83,7 @@ namespace Laboratorinis
 
                     foreach (var item in laikinas)
                     {
-                        kietiakai.AddLast(item);
+                        kietiakai.Enqueue(item);
                     }
                     laikinas.Clear();
                 }
@@ -218,23 +218,23 @@ namespace Laboratorinis
                     string tempV = "Vardas" + i + " ";
                     string tempP = "Pavarde" + i + " ";
                     double tempE = random.Next(1, 11);
-                    LinkedList<double> tempB = new LinkedList<double>();
+                    Queue<double> tempB = new Queue<double>();
                     double temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
                     temp = double.Parse(random.Next(1, 11) + "");
-                    tempB.AddLast(temp);
+                    tempB.Enqueue(temp);
 
                     failas += tempV + tempP;
 
@@ -280,7 +280,7 @@ namespace Laboratorinis
                         string tempV;
                         string tempP;
                         double tempE;
-                        LinkedList<double> tempB = new LinkedList<double>();
+                        Queue<double> tempB = new Queue<double>();
                         char[] delimiters = new char[] { '\r', '\n' };
                         string[] parts = line.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
                         // string[] parts = tempText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
@@ -289,10 +289,10 @@ namespace Laboratorinis
                         tempE = double.Parse(parts.Last());
                         for (int i = 2; i < parts.Length - 1; i++)
                         {
-                            tempB.AddLast(double.Parse(parts[i]));
+                            tempB.Enqueue(double.Parse(parts[i]));
                         }
                         Studentas tempo = new Studentas(tempV, tempP, tempE, tempB);
-                        studentai.AddLast(tempo);
+                        studentai.Enqueue(tempo);
                         List<Studentas> laikinas = new List<Studentas>();
                         foreach (var item in studentai)
                         {
@@ -304,12 +304,12 @@ namespace Laboratorinis
 
                         foreach (var item in laikinas)
                         {
-                            studentai.AddLast(item);
+                            studentai.Enqueue(item);
                         }
                         laikinas.Clear();
                         if (tempo.Galutinis < 5)
                         {
-                            vargsiukai.AddLast(tempo);
+                            vargsiukai.Enqueue(tempo);
                             laikinas = new List<Studentas>();
                             foreach (var item in vargsiukai)
                             {
@@ -321,13 +321,13 @@ namespace Laboratorinis
 
                             foreach (var item in laikinas)
                             {
-                                vargsiukai.AddLast(item);
+                                vargsiukai.Enqueue(item);
                             }
                             laikinas.Clear();
                         }
                         else
                         {
-                            kietiakai.AddLast(tempo);
+                            kietiakai.Enqueue(tempo);
                             laikinas = new List<Studentas>();
                             foreach (var item in kietiakai)
                             {
@@ -339,7 +339,7 @@ namespace Laboratorinis
 
                             foreach (var item in laikinas)
                             {
-                                kietiakai.AddLast(item);
+                                kietiakai.Enqueue(item);
                             }
                             laikinas.Clear();
                         }

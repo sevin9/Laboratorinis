@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vardas_25',['Vardas',['../class_laboratorinis_1_1_studentas.html#abc1db6cb4442cc08b9298e995679ad3e',1,'Laboratorinis::Studentas']]],
-  ['vargsiukai_26',['vargsiukai',['../class_laboratorinis_1_1_program.html#af8758586e20ecd0414404fc700f4e23f',1,'Laboratorinis::Program']]]
+  ['vardas_26',['Vardas',['../class_laboratorinis_1_1_studentas.html#abc1db6cb4442cc08b9298e995679ad3e',1,'Laboratorinis::Studentas']]],
+  ['vargsiukai_27',['vargsiukai',['../class_laboratorinis_1_1_program.html#a2a8bfd7f4b6c4f7e2abd6c64d98e2011',1,'Laboratorinis::Program']]]
 ];
