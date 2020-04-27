@@ -10,11 +10,11 @@ namespace Laboratorinis
         public string Vardas { get; set; }
         public string Pavarde { get; set; }
         public double EgzoBalas { get; set; }
-        public LinkedList<double> Pazymiai;
+        public Queue<double> Pazymiai;
         public double Galutinis { get; set; }
         public double Mediana { get; set; }
 
-        public Studentas(string Vardas, string Pavarde, double EgzoBalas, LinkedList<double> Pazymiai)
+        public Studentas(string Vardas, string Pavarde, double EgzoBalas, Queue<double> Pazymiai)
         {
             List <double> sortas = new List<double>();
             foreach (var item in Pazymiai)
@@ -25,7 +25,7 @@ namespace Laboratorinis
             Pazymiai.Clear();
             foreach (var item in sortas)
             {
-                Pazymiai.AddLast(item);
+                Pazymiai.Enqueue(item);
             }
             sortas.Clear();
             this.Vardas = Vardas;
