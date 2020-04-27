@@ -156,7 +156,7 @@ namespace Laboratorinis
         static void Main(string[] args)
         {
             Console.Clear();
-            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo");
+            Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo, 4 Failo generavimas, 5 Kieteku atspausdinimas, 6 vargsiuku atspausdinimas");
 
             bool Isejimas = true;
             while(Isejimas)
