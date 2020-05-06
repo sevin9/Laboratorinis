@@ -153,9 +153,10 @@ namespace Laboratorinis
             Console.WriteLine(foo);
             timer = new Stopwatch();
         }
-        static void Main(string[] args)
+
+        public static void vykdyti()
         {
-            Console.Clear();
+        Console.Clear();
             Console.WriteLine("Iveskite norima komanda: 1 ivesti, 2 spausdinti, 3 Nuskaityti is failo, 4 Failo generavimas, 5 Kieteku atspausdinimas, 6 vargsiuku atspausdinimas");
 
             bool Isejimas = true;
@@ -183,16 +184,47 @@ namespace Laboratorinis
                         break;
                     default:
                         Console.WriteLine("Nerasta komanda");
-                        Main(args);
+                        vykdyti();
                         break;
                     case "exit":
                         Isejimas = false;
                         break;
                 }
             }
-                
         }
 
+
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Pasirinkite norima strategija: 1 List; 2 LinkedList; 3  Queue");
+
+            bool Isejimas = true;
+            while(Isejimas)
+            {
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Laboratorinis.Listai.Program.vykdyti();
+
+                        break;
+                    case "2":
+                        Laboratorinis.Linked.Program.vykdyti();
+                        break;
+                    case "3":
+                        vykdyti();
+                        break;
+                    default:
+                        Console.WriteLine("Nerasta komanda");
+                        Main(args);
+                        break;
+                    case "exit":
+                        Isejimas = false;
+                        break;
+                }
+                
+        }
+}
         private static void Generavimas()
         {
             try
