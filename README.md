@@ -41,3 +41,7 @@ Sveiki, dokumentacija prideta prie kodo, aplankalo pavadinimas "html/index.html"
 - Kietiaku > Time taken: 0:00.009
 
 Laboratoriniai padaryti su exception'ais. Paskutineje versijoje matosi kaip krovimo laikas sumazejo, tai padetu dirbant su dideliais failais.
+
+### Glutines versijos releasas su pasirinkimu meniu i skirtingas stradegijas
+
+Padaryti pataisymai.
